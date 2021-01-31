@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 
 function MyComponent() {
-  const [count, setCount] = useState(0);
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
   function onClick() {
-    setCount((prev) => prev + 1);
-    setCount((prev) => prev + 1);
+    setCount1(count1 + 1);
+    setCount2(count2 + 1);
   }
+  const result = count1 >= 2;
   console.log("render called");
   return (
     <div>
-      <h2>{count}</h2>
+      <h2>{count1}</h2>
+      <h2>{count2}</h2>
       <button onClick={onClick}>증가</button>
     </div>
   );
