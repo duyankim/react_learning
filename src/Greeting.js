@@ -1,11 +1,19 @@
 import React from "react";
-import { UserContext } from "./App";
+import { UserContext, ThemeContext } from "./App";
 
 function Greeting() {
   return (
-    <UserContext.Consumer>
-      {(username) => <p>{`${username}님 안녕하세요`}</p>}
-    </UserContext.Consumer>
+    <ThemeContext.Consumer>
+      {(theme) => (
+        <UserContext.Consumer>
+          {(username) => (
+            <p
+              style={{ color: theme === "dark" ? "gray" : "green" }}
+            >{`${username}님 안녕하세요`}</p>
+          )}
+        </UserContext.Consumer>
+      )}
+    </ThemeContext.Consumer>
   );
 }
 
