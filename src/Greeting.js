@@ -1,19 +1,27 @@
 import React from "react";
-import { UserContext, ThemeContext } from "./App";
+import { UserContext, SetUserContext } from "./App";
 
 function Greeting() {
   return (
-    <ThemeContext.Consumer>
-      {(theme) => (
+    <SetUserContext.Consumer>
+      {(setUser) => (
         <UserContext.Consumer>
-          {(username) => (
-            <p
-              style={{ color: theme === "dark" ? "gray" : "green" }}
-            >{`${username}님 안녕하세요`}</p>
+          {({ username, helloCount }) => (
+            <>
+              <p>{`${username}님 안녕하세요`}</p>
+              <p>{`인사 횟수: ${helloCount}`}</p>
+              <button
+                onClick={() =>
+                  setUser({ username, helloCount: helloCount + 1 })
+                }
+              >
+                인사하기
+              </button>
+            </>
           )}
         </UserContext.Consumer>
       )}
-    </ThemeContext.Consumer>
+    </SetUserContext.Consumer>
   );
 }
 

@@ -1,17 +1,18 @@
 import Profile from "./Profile";
 import React, { useState } from "react";
 
-export const UserContext = React.createContext("");
-export const ThemeContext = React.createContext("dark");
+export const UserContext = React.createContext({ username: "", helloCount: 0 });
+export const SetUserContext = React.createContext(() => {});
 
 function App() {
+  const [user, setUser] = useState({ username: "Ariana", helloCount: 0 });
   return (
     <div>
-      <ThemeContext.Provider value="light">
-        <UserContext.Provider value="mike">
+      <SetUserContext.Provider value={setUser}>
+        <UserContext.Provider value={user}>
           <Profile />
         </UserContext.Provider>
-      </ThemeContext.Provider>
+      </SetUserContext.Provider>
     </div>
   );
 }
