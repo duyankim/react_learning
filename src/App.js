@@ -1,19 +1,15 @@
-import Profile from "./Profile";
-import React, { useState } from "react";
-
-export const UserContext = React.createContext({ username: "", helloCount: 0 });
-export const SetUserContext = React.createContext(() => {});
+import React from "react";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import Subscribers from "./components/Subscribers";
 
 function App() {
-  const [user, setUser] = useState({ username: "Ariana", helloCount: 0 });
   return (
-    <div>
-      <SetUserContext.Provider value={setUser}>
-        <UserContext.Provider value={user}>
-          <Profile />
-        </UserContext.Provider>
-      </SetUserContext.Provider>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Subscribers />
+      </div>
+    </Provider>
   );
 }
 
