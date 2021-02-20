@@ -4,6 +4,7 @@ import store from "./redux/store";
 import Subscribers from "./components/Subscribers";
 import Views from "./components/Views";
 import Display from "./components/Display";
+import Comments from "./components/Comments";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Subscribers />
         <Views />
         <Display />
+        <Comments />
       </div>
     </Provider>
   );
