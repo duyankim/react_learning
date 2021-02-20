@@ -1,18 +1,18 @@
 import { connect } from "react-redux";
-import { addSubscriber } from "../redux/subscribers/actions";
+import { addSubscriber } from "../redux";
 
 const Subscribers = ({ count, addSubscriber }) => {
   return (
-    <div className="items">
+    <div>
       <p>구독자수: {count} </p>
       <button onClick={() => addSubscriber()}>구독</button>
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ subscribers }) => {
   return {
-    count: state.count
+    count: subscribers.count
   };
 };
 
